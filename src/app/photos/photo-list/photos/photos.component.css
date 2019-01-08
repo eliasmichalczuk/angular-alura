@@ -1,0 +1,5 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+#footer ul {
+    margin: 0; /* To remove default bottom margin */ 
+    padding: 0; /* To remove default left padding */
+}
