@@ -1,5 +1,5 @@
 <app-search 
-    (Typing)="filter = $event">
+    (Typing)="filter = $event" [value]="filter">
 </app-search>
 <app-photos 
     [photos]="photos | filterByDescription: filter">
