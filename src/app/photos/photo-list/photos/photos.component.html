@@ -2,7 +2,7 @@
     <div class="">
         <div class="row">
                 <li  *ngFor="let cols of rows" class="row no-gutters">
-                    <div *ngFor="let photo of cols" class="col-4">
+                    <div *ngFor="let photo of cols" class="col-4" appDarkenOnHover brightness='80%'>
                         <app-card [title]="photo.description">
                             <app-photo class="col-md-4 col-sm-4 col-lg-4"   
                                 [description]="photo.description"
