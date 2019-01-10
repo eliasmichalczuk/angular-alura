@@ -1,7 +1,7 @@
 # Alurapic
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.2.
-Npm 8.15.0 was used.
+Node 8.15.0 and Npm 6.4.1 were used.
 
 ## Development server
 
