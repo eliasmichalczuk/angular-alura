@@ -24,8 +24,8 @@ export class SigninComponent implements OnInit {
   // usar form builder para gerar formulario
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      userName: ['elias', Validators.required],
-      password: ['maluco', Validators.required]
+      userName: ['flavio', Validators.required],
+      password: ['123', Validators.required]
     });
   }
 
@@ -36,7 +36,11 @@ export class SigninComponent implements OnInit {
     this.authService.authenticate(userName, password)
       .subscribe(
         // () => this.router.navigateByUrl('user/' + userName),
-        () => this.router.navigate(['user', userName]),
+        succes => {
+          this.router.navigate(['user', userName]);
+          console.log('success --> ', succes);
+          console.log(userName);
+         },
         err => {
           console.log(err);
           this.loginForm.reset();

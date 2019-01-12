@@ -15,11 +15,12 @@ export class AuthService {
 
   authenticate(userName: string, password: string) {
                                             // mesmo nome da variavel e da propriedade, posso simplificar
+                                            console.log('user pass', userName);
     return this.http
     .post(API_URl + 'user/login', { userName, password }, { observe: 'response'})
      // observe response usado para ter acesso ao headers, para pegar o token
     .pipe(tap( res => {
-      const authToken = res.headers.get('x-accesss-token');
+      const authToken = res.headers.get('x-access-token');
       this.tokenService.setToken(authToken);
       console.log('AuthService -> authenticate -> authToken', authToken);
     }));
