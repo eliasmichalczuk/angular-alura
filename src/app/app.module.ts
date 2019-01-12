@@ -7,6 +7,8 @@ import { PhotosModule } from './photos/photos.module';
 import { ErrorsModule } from './errors/errors.module';
 import { FormsModule } from '@angular/forms';
 import { HomeModule } from './home/home.module';
+import { HeaderComponent } from './core/header/header.component';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { HomeModule } from './home/home.module';
     PhotosModule,
     ErrorsModule,
     FormsModule,
-    HomeModule
+    HomeModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

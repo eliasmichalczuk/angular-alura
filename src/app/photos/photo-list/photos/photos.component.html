@@ -1,6 +1,6 @@
 <ol class="list-unstyled" *ngIf="photos.length; else sorryText">
     <div class="">
-        <div class="row">
+        <div class="row center">
                 <li  *ngFor="let cols of rows" class="row no-gutters">
                     <div *ngFor="let photo of cols" class="col-4" appDarkenOnHover brightness='80%'>
                         <app-card [title]="photo.description">
