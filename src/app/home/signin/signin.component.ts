@@ -27,6 +27,7 @@ export class SigninComponent implements OnInit {
       userName: ['flavio', Validators.required],
       password: ['123', Validators.required]
     });
+    this.userNameInput.nativeElement.focus();
   }
 
   login() {

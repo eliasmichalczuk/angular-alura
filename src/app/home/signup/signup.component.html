@@ -3,7 +3,8 @@
 
   <div class="form-group" >
 
-    <input formControlName="email" type="text" placeholder="email" autofocus class="form-control">
+    <input #emailInput
+      formControlName="email" type="text" placeholder="email" autofocus class="form-control">
     <app-vmessage
       *ngIf="signupForm.get('email').errors?.required"
       text="Please type your email">

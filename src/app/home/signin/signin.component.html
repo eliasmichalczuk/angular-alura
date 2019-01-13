@@ -1,26 +1,29 @@
-<h4 class="text-center">Login</h4>
-<form [formGroup]="loginForm" class="form mt-4 offset-md-5 col-md-2 center" (submit)="login()">
-  <div class="form-group">
-    <input 
-      #userNameInput
-      formControlName="userName" 
-      type="text" 
-      class="form-control" 
-      placeholder="username" autofocus>
-    <app-vmessage
-      *ngIf="loginForm.get('userName').errors?.required"
-      text="User name required">
-    </app-vmessage>
-  </div>
+<ng-container class="parent">
+  <h4 class="text-center">Login</h4>
+  <form [formGroup]="loginForm" class="form mt-4 offset-md-5 col-md-2 center" (submit)="login()">
+    <div class="form-group">
+      <input 
+        #userNameInput
+        formControlName="userName" 
+        type="text" 
+        class="form-control" 
+        placeholder="username" autofocus>
+      <app-vmessage
+        *ngIf="loginForm.get('userName').errors?.required"
+        text="User name required">
+      </app-vmessage>
+    </div>
+    
+    <div class="form-group">
+      <input formControlName="password" type="password" class="form-control" placeholder="password" autofocus>
+      <app-vmessage
+        *ngIf="loginForm.get('password').errors?.required"
+        text="Password required">
+      </app-vmessage>
+    </div>
   
-  <div class="form-group">
-    <input formControlName="password" type="password" class="form-control" placeholder="password" autofocus>
-    <app-vmessage
-      *ngIf="loginForm.get('password').errors?.required"
-      text="Password required">
-    </app-vmessage>
-  </div>
+    <button [disabled]="loginForm.invalid" type="submit" class="btn btn-primary btn-block">Login</button>
+  </form>
+  <p class="text-center margin-top">Not a user? <a [routerLink]="['signup']">Register Now</a></p>
 
-  <button [disabled]="loginForm.invalid" type="submit" class="btn btn-primary btn-block">Login</button>
-</form>
-<p class="text-center margin-top">Not a user? <a [routerLink]="['/signup']">Register Now</a></p>
+</ng-container>

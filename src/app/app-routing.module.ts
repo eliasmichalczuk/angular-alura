@@ -4,17 +4,15 @@ import { PhotoListComponent } from './photos/photo-list/photo-list.component';
 import { PhotoFormComponent } from './photos/photo-form/photo-form.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { PhotoListResover } from './photos/photo-list/photo-list.resolver';
-import { SigninComponent } from './home/signin/signin.component';
-import { AuthGuard } from './core/auth/auth.guard';
-import { SignupComponent } from './home/signup/signup.component';
 
 const routes: Routes = [
-  { path: '',
-  component:  SigninComponent,
-  canActivate: [AuthGuard]
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'home'
   },
-  { path: 'signup',
-  component:  SignupComponent,
+  { path: 'home',
+    loadChildren: './home/home.module#HomeModule'
   },
   { path: 'user/:userName', component:  PhotoListComponent,
     resolve: {
@@ -26,7 +24,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {/*useHash: true*/})],
+  // use hash utilizado para que navegadores que nao suportam o historyAPI, nao acessem o backend direto
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
