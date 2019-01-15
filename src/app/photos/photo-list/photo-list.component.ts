@@ -4,6 +4,7 @@ import { Photo } from '../photo/photo';
 import { Subject, timer } from 'rxjs';
 import { debounceTime, debounce } from 'rxjs/operators';
 import { PhotoService } from '../photo/photo.service';
+import { LoadingService } from 'src/app/shared/components/loading/loading.service';
 
 @Component({
   selector: 'app-photo-list',

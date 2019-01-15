@@ -7,7 +7,7 @@ import { of, throwError } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
 
-//const API = environment.ApiUrl;
+// const API = environment.ApiUrl;
 const API = 'http://localhost:3000/';
 
 @Injectable({
@@ -36,7 +36,10 @@ export class PhotoService {
     formData.append('description', description);
     formData.append('allowComments', allowComments ? 'true' : 'false');
     formData.append('imageFile', file);
-    return this.http.post(API + 'photos/upload', formData);
+    return this.http.post(API + 'photos/upload', formData, {
+      observe: 'events',
+      reportProgress: true
+    });
   }
 
   findById(photoId: number) {

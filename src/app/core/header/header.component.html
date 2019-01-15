@@ -1,6 +1,18 @@
 <header class="fixec-top">
   <nav class="navbar navbar-light bg-white">
-    <a href="" class="navbar-brand">AluraPic</a>
+      <i (click)="menu.toggle()" (keyup.space)="menu.toggle()" class="fa fa-bars mr-2"></i>
+
+    <a href="" class="navbar-brand">
+      AluraPic
+    </a>
+
+    <app-menu #menu>
+      <ul class="list-unstyled">
+        <li>
+          <a appShowIfLoggedIn [routerLink]="['p', 'add']">Upload</a>
+        </li>
+      </ul>
+    </app-menu>
     <div *ngIf="user; else login">
       <i class="fa fa-user-circle mr-1"></i>
       <a class="mr-1">   {{user?.name}}</a>
@@ -13,6 +25,7 @@
     </ng-template>
   </nav>
   <div class="fixed-top">
+    <app-loading></app-loading>
     <app-alert>
     </app-alert>
   </div>
