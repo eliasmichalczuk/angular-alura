@@ -1,16 +1,24 @@
-<div class="bg-white border" *ngIf="(photo$ | async) as photo">
+<div class="bg-white border" *ngIf="photo">
   <div class="row">
     <div class="col-lg-8">
-      <app-photo [url]="photo?.url" [description]="photo.description"></app-photo>
+      <app-photo [url]="photo?.url" [description]="photo?.description"></app-photo>
     </div>
-
     <div class="col-lg-4">
       <small>
-        <p class="text-left break-word">{{photo.description}}</p>
+        <p class="text-left break-word">{{photo?.description}}</p>
+          <div class="text-left mb-4">
+            <i class="fa fa-comment-o mr-2 ml-2 fa-lg">{{photo?.comments}}</i>
+            <i appPhotoOwnerOnly [ownedPhoto]="photo" (click)="remove()" class="fa fa-trash-o pull-right fa-lg"></i>
+          </div>
         <hr>
       </small>
-      <app-photo-comments [photoId]="photoId"></app-photo-comments>
-      
+      <app-photo-comments 
+        *ngIf="photo?.allowComments; else warning"
+        [photoId]="photoId">
+      </app-photo-comments>
+      <ng-template>
+        <p>User disabled comments</p>
+      </ng-template>
     </div>
   </div>
 </div>

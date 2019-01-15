@@ -9,6 +9,7 @@ import * as jtw_decode from 'jwt-decode';
 })
 export class UserService {
 
+  // subject behavior segua o valor para o próximo subscribe que buscar
   private userSubjet = new BehaviorSubject<User>(null);
   private userName: string;
 

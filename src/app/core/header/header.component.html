@@ -1,9 +1,9 @@
 <header class="fixec-top">
   <nav class="navbar navbar-light bg-white">
     <a href="" class="navbar-brand">AluraPic</a>
-    <div *ngIf="(user$ | async) as User; else login">
+    <div *ngIf="user; else login">
       <i class="fa fa-user-circle mr-1"></i>
-      <a class="mr-1">   {{user.name}}</a>
+      <a class="mr-1">   {{user?.name}}</a>
       <button class="btn btn-secondary btn-sm" (click)="logout()">Logout</button>
     </div>
     <ng-template #login>

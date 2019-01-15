@@ -34,16 +34,20 @@ export class PhotoService {
     return this.http.post(API + 'photos/upload', formData);
   }
 
-  findById(id: number) {
-    return this.http.get<Photo>(API + 'photos/' + id);
+  findById(photoId: number) {
+    return this.http.get<Photo>(API + 'photos/' + photoId);
   }
 
-  getComments(id: number) {
-    return this.http.get<PhotoComment[]>(API + 'photos/' + id + '/comments');
+  getComments(photoId: number) {
+    return this.http.get<PhotoComment[]>(API + 'photos/' + photoId + '/comments');
   }
 
   addComment(photoId: number, commentText: string) {
     return this.http.post(API + 'photos/' + photoId + '/comments',
                           {commentText});
+  }
+
+  removePhoto(photoId: number) {
+    return this.http.delete(API + 'photos/' + photoId);
   }
 }
