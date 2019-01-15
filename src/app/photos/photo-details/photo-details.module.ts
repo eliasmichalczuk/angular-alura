@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { VmessageModule } from 'src/app/shared/components/vmessage/vmessage.module';
 import { PhotoOwnerOnlyDirective } from './photo-owner-only/photo-owner-only.directive';
+import { ShowIfLoggeInModule } from 'src/app/shared/directives/show-if-loggeIn/show-if-logge-in.module';
 
 @NgModule({
   declarations: [PhotoDetailsComponent, PhotoCommentsComponent, PhotoCommentsComponent, PhotoOwnerOnlyDirective],
@@ -16,7 +17,8 @@ import { PhotoOwnerOnlyDirective } from './photo-owner-only/photo-owner-only.dir
     RouterModule,
     ReactiveFormsModule,
     FormsModule,
-    VmessageModule
+    VmessageModule,
+    ShowIfLoggeInModule
   ],
   exports: [PhotoDetailsComponent, PhotoCommentsComponent]
 })

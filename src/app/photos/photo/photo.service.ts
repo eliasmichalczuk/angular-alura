@@ -1,9 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Photo } from './photo';
-import { formatDate } from '@angular/common';
 import { PhotoComment } from './photo-comment';
-const API = 'http://localhost:3000/';
+import { map, catchError } from 'rxjs/operators';
+import { of, throwError } from 'rxjs';
+import { environment } from '../../../environments/environment';
+
+
+const API = environment.ApiUrl;
+//const API = 'http://localhost:3000/';
 
 @Injectable({
   providedIn: 'root'
@@ -49,5 +54,13 @@ export class PhotoService {
 
   removePhoto(photoId: number) {
     return this.http.delete(API + 'photos/' + photoId);
+  }
+
+  like(photoId: number) {
+    //  necessário parametro observe para ter acesso ào código de status
+    return this.http.post(API + 'photos/' + photoId + '/like', {}, { observe: 'response'})
+                    .pipe(map(res => true))
+                    .pipe(catchError(err => {
+                      return err.status === '304' ? of(false) : throwError(err);                    }));
   }
 }
