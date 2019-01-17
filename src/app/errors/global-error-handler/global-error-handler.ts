@@ -25,7 +25,7 @@ export class GlobalErrorHandler implements ErrorHandler {
                 : '';
         const message = error.message ? error.message : error.toString();
 
-        //router.navigate(['/error']);
+        // only on production: router.navigate(['/error']);
         StackTrace.fromError(error)
                     .then(stackFrames => {
                         const stackAsString = stackFrames.map(sf => sf.toString())
