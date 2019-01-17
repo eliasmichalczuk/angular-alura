@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserNotTakenValidatorService } from './user-not-taken-validator.service';
 import { NewUser } from './new-user';
 import { SignupService } from './signup.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { PlatformDetectorService } from 'src/app/core/platform-detector/platform-detector.service';
 import { userNamePassword } from './username-password-validator';
 
@@ -23,7 +23,8 @@ export class SignupComponent implements OnInit {
     private userNotTaken: UserNotTakenValidatorService,
     private signUpService: SignupService,
     private router: Router,
-    private platformDetector: PlatformDetectorService) {
+    private platformDetector: PlatformDetectorService,
+    private activatedRoute: ActivatedRoute) {
    }
 
   ngOnInit() {
