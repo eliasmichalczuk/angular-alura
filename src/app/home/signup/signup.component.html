@@ -1,16 +1,16 @@
 <h4 class="text-center">Sign Up</h4>
-<form [formGroup]="signupForm" action="" class="form offset-md-4 mt-4 col-md-4 text-center" (submit)="signup()">
+<form #form="ngForm" [formGroup]="signupForm" action="" class="form offset-md-4 mt-4 col-md-4 text-center" (submit)="signup()">
 
   <div class="form-group" >
 
     <input #emailInput
       formControlName="email" type="text" placeholder="email" autofocus class="form-control">
     <app-vmessage
-      *ngIf="signupForm.get('email').errors?.required"
+      *ngIf="signupForm.get('email').errors?.required && form.submitted"
       text="Please type your email">
     </app-vmessage>
     <app-vmessage
-      *ngIf="signupForm.get('email').errors?.email"
+      *ngIf="signupForm.get('email').errors?.email && form.submitted"
       text="Type a valid email">
     </app-vmessage>
   </div>
@@ -19,15 +19,15 @@
 
     <input  formControlName="fullName" type="text" placeholder="full name" class="form-control">
     <app-vmessage
-      *ngIf="signupForm.get('fullName').errors?.required"
+      *ngIf="signupForm.get('fullName').errors?.required && form.submitted"
       text="Please type your name">
     </app-vmessage>
     <app-vmessage
-      *ngIf="signupForm.get('fullName').errors?.minlength"
+      *ngIf="signupForm.get('fullName').errors?.minlength && form.submitted"
       text="Full name mut have at least 2 characters">
     </app-vmessage>   
     <app-vmessage
-      *ngIf="signupForm.get('fullName').errors?.maxlength"
+      *ngIf="signupForm.get('fullName').errors?.maxlength && form.submitted"
       text="Full name can be max 40 characters">
     </app-vmessage>       
   </div>
@@ -36,19 +36,19 @@
 
     <input  formControlName="userName" type="text" placeholder="user name" class="form-control">
     <app-vmessage
-      *ngIf="signupForm.get('userName').errors?.required"
+      *ngIf="signupForm.get('userName').errors?.required && form.submitted"
       text="Please type your username">
     </app-vmessage>
     <app-vmessage
-      *ngIf="signupForm.get('userName').errors?.minlength"
+      *ngIf="signupForm.get('userName').errors?.minlength && form.submitted"
       text="Username mut have at least 2 characters">
     </app-vmessage>   
     <app-vmessage
-      *ngIf="signupForm.get('userName').errors?.maxlength"
+      *ngIf="signupForm.get('userName').errors?.maxlength && form.submitted"
       text="Username can be max 30 characters">
     </app-vmessage>  
     <app-vmessage
-      *ngIf="signupForm.get('userName').errors?.pattern"
+      *ngIf="signupForm.get('userName').errors?.pattern && form.submitted"
       text="Your username may not have special characters">
     </app-vmessage> 
     <app-vmessage
@@ -62,19 +62,23 @@
     
     <input  formControlName="password" type="password" placeholder="password" class="form-control">
     <app-vmessage
-      *ngIf="signupForm.get('password').errors?.required"
+      *ngIf="signupForm.get('password').errors?.required && form.submitted"
       text="Please type your password">
     </app-vmessage>
     <app-vmessage
-      *ngIf="signupForm.get('password').errors?.minlength"
+      *ngIf="signupForm.get('password').errors?.minlength && form.submitted"
       text="Password mut have at least 8 characters">
     </app-vmessage>   
     <app-vmessage
-      *ngIf="signupForm.get('password').errors?.maxlength"
+      *ngIf="signupForm.get('password').errors?.maxlength && form.submitted"
       text="Password can be max 14 characters">
+    </app-vmessage> 
+    <app-vmessage
+      *ngIf="signupForm.errors?.userNamePassword && form.submitted"
+      text="password same as username not allowed">
     </app-vmessage> 
   </div>
 
-  <button [disabled]="signupForm.invalid || signupForm.pending" class="btn btn-primary">Sign Up</button>
+  <button class="btn btn-primary">Sign Up</button>
    <p>Already a user? <a [routerLink]="['']">Sign In!</a></p>
 </form>
