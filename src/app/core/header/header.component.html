@@ -16,7 +16,7 @@
     <div *ngIf="user; else login">
       <i class="fa fa-user-circle mr-1"></i>
       <a class="mr-1">   {{user?.name}}</a>
-      <button class="btn btn-secondary btn-sm" (click)="logout()">Logout</button>
+      <button class="btn btn-secondary btn-sm test-logout-button" (click)="logout()">Logout</button>
     </div>
     <ng-template #login>
       <span class="navbar-text">
