@@ -27,8 +27,8 @@ export class SigninComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe(params => this.fromUrl = params['fromUrl']);
     this.loginForm = this.formBuilder.group({
-      userName: ['flavio', Validators.required],
-      password: ['123', Validators.required]
+      userName: ['', Validators.required],
+      password: ['', Validators.required]
     });
     this.userNameInput.nativeElement.focus();
   }

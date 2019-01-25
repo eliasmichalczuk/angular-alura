@@ -3,10 +3,16 @@ import { browser, by, element } from 'protractor';
 
 export class Login {
 
+
   private credentials = { user: 'flavio', pass: '123'};
 
+  setWrongCredentials(): void {
+    element(by.className('test-username')).sendKeys('wrongUser');
+    element(by.className('test-password')).sendKeys('wrongPassword');
+    element(by.className('test-login-button')).click();
+  }
   navigateTo() {
-    return browser.get('/');
+    return browser.get('/home');
   }
 
   getTitleText() {
@@ -28,8 +34,8 @@ export class Login {
     //   itens[0].sendKeys(credentials.user);
     //   itens[1].sendKeys(credentials.pass);
     // });
-    // element(by.className('test-username')).sendKeys(credentials.user);
-    // element(by.className('test-password')).sendKeys(credentials.pass);
+    element(by.className('test-username')).sendKeys(credentials.user);
+    element(by.className('test-password')).sendKeys(credentials.pass);
     element(by.className('test-login-button')).click();
   }
 

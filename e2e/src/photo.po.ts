@@ -19,13 +19,16 @@ export class Photo {
     return browser.getTitle();
   }
 
-  async photoUpload() {
+  photoUpload() {
     const path = require('path');
     this.navigateToPhotoUpload();
-     const fileToUpload = '../img/uploadTest',
-     absolutePath = path.resolve(__dirname, fileToUpload);
-     await element(by.className('test-upload-photo')).sendKeys(absolutePath);
-     element(by.css('.btn.btn-primary.btn-block')).click();
+    const fileToUpload = '../img/uploadTest.jpg',
+    absolutePath = path.resolve(__dirname, fileToUpload);
+    browser.wait(function() {
+      return element(by.className('test-upload-photo')).sendKeys(absolutePath);
+    }, 3000).then(() => {
+      element(by.className('test-photo-upload')).click();
+    });
   }
 
   async chooseFirstPic() {

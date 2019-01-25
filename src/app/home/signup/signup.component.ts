@@ -39,10 +39,10 @@ export class SignupComponent implements OnInit {
         asyncValidator
       ],
       fullName: ['',
-        [Validators.required, Validators.minLength(2), Validators.maxLength(40)]
+        [Validators.required, Validators.minLength(2), Validators.maxLength(50)]
       ],
       password: ['',
-        [Validators.required, Validators.minLength(8), Validators.maxLength(14)]
+        [Validators.required, Validators.minLength(1), Validators.maxLength(50)]
       ]
     }, {
       validator: userNamePassword
@@ -56,10 +56,10 @@ export class SignupComponent implements OnInit {
 
   signup() {
     if (this.signupForm.valid && !this.signupForm.pending) {
+      console.log(this.signupForm.getRawValue() as NewUser);
       const user = this.signupForm.getRawValue() as NewUser;
       this.signUpService.signup(user)
-                        .subscribe(() => this.router.navigate(['']),
-                                  err => console.log(err)
+                        .subscribe(() => this.router.navigate([''])
                         );
     }
   }
