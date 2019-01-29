@@ -23,7 +23,7 @@ describe('AppComponent', () => {
   it(`should have as title 'alurapic'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('alurapic');
+    expect(app.title).toEqual('Sign in');
   });
 
   it('should render title in a h1 tag', () => {

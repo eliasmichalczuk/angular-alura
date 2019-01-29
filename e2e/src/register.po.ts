@@ -24,8 +24,8 @@ export class Register {
         browser.get('/');
         element(by.className('test-username')).clear();
         element(by.className('test-password')).clear();
-        element(by.className('test-username')).sendKeys(this.registerData.userName);
-        element(by.className('test-password')).sendKeys(this.registerData.password);
+        element(by.className('test-username')).sendKeys('flavio');
+        element(by.className('test-password')).sendKeys('123');
         element(by.className('test-login-button')).click();
     }
 }

@@ -2,7 +2,7 @@
   <form [formGroup]="photoForm" class="row" (submit)="upload()">
     <div class="col-md-6 text-center">
       <div class="form-group" *ngIf="!preview; else showPreview">
-        <button type="button" appImmediateClick (click)="fileInput.click()" class="btn btn-primary">
+        <button type="button" appImmediateClick (click)="fileInput.click()" class="btn btn-primary test-photo-click">
           <i class="fa fa-image fa-4x align-middle"></i>
         </button>
         <input
@@ -50,7 +50,7 @@
         [disabled]="photoForm.invalid" type="submit" class="btn btn-primary btn-block test-photo-upload">
           Upload
         </button>
-        <a [routerLink]="['']" class="btn btn-secondary btn-block">Cancel</a>
+        <a [routerLink]="['']" class="btn btn-secondary btn-block test-cancel-button">Cancel</a>
       </div>
       <ng-template #uploadProgress>
         <div class="text-center display-4">

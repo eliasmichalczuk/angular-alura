@@ -22,13 +22,13 @@ describe('photo detail page', () => {
     // login.setCredentials();
   });
 
-//   it('shoud register and log in with the same credentials', (done) => {
-//     login.navigateTo();
-//     register.navigateToRegister();
-//     expect(login.currentTitle()).toBe('Sign up');
-//     register.completeForm();
-//     register.navigateToLogin();
-//     expect(browser.getTitle()).toEqual('Timeline');
-//   });
+  // it('shoud register and log in with the same credentials', () => {
+  //   login.navigateTo();
+  //   register.navigateToRegister();
+  //   expect(login.currentTitle()).toBe('Sign up');
+  //   register.completeForm();
+  //   register.navigateToLogin();
+  //   expect(browser.getTitle()).toEqual('Timeline');
+  // });
 
 });

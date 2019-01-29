@@ -12,7 +12,7 @@ export class Login {
     element(by.className('test-login-button')).click();
   }
   navigateTo() {
-    return browser.get('/home');
+    browser.get('/home');
   }
 
   getTitleText() {
@@ -29,7 +29,7 @@ export class Login {
     return this.credentials.user;
   }
 
-  setCredentials(credentials = this.credentials) {
+  async setCredentials(credentials = this.credentials) {
     // element(by.css('.form-control')).then(itens => {
     //   itens[0].sendKeys(credentials.user);
     //   itens[1].sendKeys(credentials.pass);

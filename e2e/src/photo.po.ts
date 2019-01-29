@@ -19,22 +19,28 @@ export class Photo {
     return browser.getTitle();
   }
 
-  photoUpload() {
+  async photoUpload() {
     const path = require('path');
+    browser.waitForAngular();
+    browser.navigate().refresh();
     this.navigateToPhotoUpload();
+    browser.waitForAngular();
+    browser.navigate().refresh();
     const fileToUpload = '../img/uploadTest.jpg',
     absolutePath = path.resolve(__dirname, fileToUpload);
-    browser.wait(function() {
-      return element(by.className('test-upload-photo')).sendKeys(absolutePath);
-    }, 3000).then(() => {
-      element(by.className('test-photo-upload')).click();
-    });
+    // browser.wait(function() {
+    //   return element(by.className('test-upload-photo')).sendKeys(absolutePath);
+    // }, 500).then(() => {
+    //   element(by.className('test-photo-upload')).click();
+    // });
+    element(by.className('test-upload-photo')).sendKeys(absolutePath);
+    element(by.className('test-photo-upload')).click();
   }
 
   async chooseFirstPic() {
     this.navigateTo();
     element.all(by.tagName('img')).first().click();
-    return await browser.getCurrentUrl();
+    return browser.getCurrentUrl();
   }
 
   private getLogoutButton() {
@@ -48,23 +54,10 @@ export class Photo {
   }
 
   navigateToPhotoUpload(): any {
-    return browser.get(`/p/add`);
+    browser.get(`/p/add`);
   }
 
   getUser() {
     return this.credentials.user;
-  }
-
-  setCredentials(credentials = this.credentials) {
-    // element(by.css('.form-control')).then(itens => {
-    //   itens[0].sendKeys(credentials.user);
-    //   itens[1].sendKeys(credentials.pass);
-    // });
-    // element(by.css('.form-control')).sendKeys(credentials.pass);
-    element(by.css('btn-primary')).click();
-  }
-
-  logoutButtonIsEnabled() {
-    return this.getLogoutButton().isEnabled();
   }
 }

@@ -3,8 +3,9 @@ import { Login } from './login.po';
 import { $, by, element, browser } from 'protractor';
 import { element as element1, detectChanges } from '@angular/core/src/render3';
 import { Logout } from './logout.po';
+import { Photo } from './photo.po';
 
-describe('login page', () => {
+// describe('login page', () => {
 
   const wrongCredentials = {
     user: 'wrongname',
@@ -12,8 +13,10 @@ describe('login page', () => {
   };
   let loginPage: Login;
   let logoutPage: Logout;
+  let photoPage: Photo;
 
   beforeEach(() => {
+    photoPage = new Photo();
     loginPage = new Login();
     logoutPage = new Logout();
     loginPage.navigateTo();
@@ -49,11 +52,10 @@ describe('login page', () => {
     expect(loginPage.currentTitle()).toBe('Sign in');
   });
 
-
   function writeScreenShot(data, filename) {
     const fs = require('fs');
     const stream = fs.createWriteStream(filename);
     stream.write(new Buffer(data, 'base64'));
     stream.end();
 }
-});
+// });
