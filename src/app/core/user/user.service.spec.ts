@@ -1,12 +1,17 @@
 import { TestBed } from '@angular/core/testing';
 
 import { UserService } from './user.service';
+import { TokenService } from '../token/token.service';
 
 describe('UserService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  beforeEach(() => TestBed.configureTestingModule({
+    providers: [UserService, TokenService]
+  }));
 
-  it('should be created', () => {
+  it('UserService | should be created', () => {
     const service: UserService = TestBed.get(UserService);
     expect(service).toBeTruthy();
   });
+
+
 });
