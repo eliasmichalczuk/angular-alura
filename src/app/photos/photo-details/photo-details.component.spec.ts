@@ -21,13 +21,9 @@
 //       // providers: [ MockUserService, { provide: UserService, useClass: MockUserService },
 //       //               MockTokenService, { provide: TokenService, useClass: MockTokenService },
 //       //                ]
-//       providers: [ UserService, TokenService, AlertService, PhotoService, PhotoDetailsComponent, {
-//         provide: ActivatedRoute,
-//         useValue: {
-//           params: of({id: 13})
-//         }
-//       } ]
-//     })
+//       providers: [ UserService, AlertService, PhotoService
+//       ]
+//     });
 //     //.compileComponents();
 //   }));
 
@@ -42,7 +38,8 @@
 //   });
 
 //   it('should remove a photo', () => {
-//   })
+
+//   });
 // });
 
 // class MockUserService {
@@ -52,11 +49,9 @@
 // class MockTokenService {
 
 //   getToken() {
-//     return 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6ImZsYXZpbyIsImVtYWlsIjoiZmxhdmlvQGFsdXJhcGljLmNvbS5iciIsImlhdCI6MTU0ODc5NzM2NywiZXhwIjoxNTQ4ODgzNzY3fQ.uPOS_zaDGgiLDPpzFK6E-ilyhbC8FKBCt4ROb3INDQ4'
 //   }
 
 
 //   hasToken() {
-//     return !!this.getToken();
 //   }
 // }
