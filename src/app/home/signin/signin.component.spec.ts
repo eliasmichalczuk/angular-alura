@@ -33,7 +33,7 @@ describe('SigninComponent |', () => {
       providers: [ FormBuilder,
         {
           provide: Router,
-          useClass: routerSpy
+          useValue: routerSpy
       }
         , PlatformDetectorService,
         {
