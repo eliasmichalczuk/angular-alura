@@ -1,42 +1,50 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PhotoComponent } from './photo.component';
-import { Component } from '@angular/core';
+import { Component, DebugElement, ViewChild } from '@angular/core';
+import { By } from '@angular/platform-browser';
 
-describe('PhotoComponent', () => {
-  let component: PhotoComponent;
-  let fixture: ComponentFixture<PhotoComponent>;
+describe('PhotoComponent | ', () => {
+  // let component: PhotoComponent;
+  // let fixture: ComponentFixture<PhotoComponent>;
 
   let testComponent: TestPhotoComponent;
   let testFixture: ComponentFixture<TestPhotoComponent>;
+
+  let de: DebugElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ PhotoComponent, TestPhotoComponent ]
     })
     .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(PhotoComponent);
-    component = fixture.componentInstance;
+    // fixture = TestBed.createComponent(PhotoComponent);
+    // component = fixture.componentInstance;
     testFixture = TestBed.createComponent(TestPhotoComponent);
     testComponent = testFixture.componentInstance;
-    fixture.detectChanges();
-  });
+    testFixture.detectChanges();
+    //fixture.detectChanges();
+    // de = fixture.debugElement;
+  }));
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should show image', () => {
+    testComponent.photoComponent.url = 'uploadTest';
+    testComponent.photoComponent.description = 'testing alt';
+    testFixture.detectChanges();
+    expect(testFixture.nativeElement.querySelector('img').src).toEqual('http://localhost:3000/imgs/uploadTest');
+    expect(testFixture.nativeElement.querySelector('img').alt).toEqual('testing alt');
   });
 });
 
 @Component({
   selector: 'app-test-photo-component',
   template: `
-    <app-photo src="https://cdn-images-1.medium.com/max/1600/1*AKKvE3QmN_ZQmEzSj16oXg.png" alt="testing">
+    <app-photo >
     </app-photo>
   `
 })
 export class TestPhotoComponent {
 
+  @ViewChild (PhotoComponent)
+  public photoComponent: PhotoComponent;
 }

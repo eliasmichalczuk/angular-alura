@@ -23,7 +23,6 @@ export class UserNotTakenValidatorService {
                     .pipe(map(isTaken => isTaken ? { userNameTaken: true } : null))
                     // completa a emissão para funcionar, emite o primeiro valor da emissão
                     .pipe(first());
-      return null;
     };
   }
 }

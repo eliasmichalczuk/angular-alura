@@ -47,7 +47,7 @@ describe('PhotoCommentsComponent', () => {
     // component.comments$.subscribe(comments => newLength = comments.length);
     // expect(newLength > commentLength).toBeTruthy();
 
-    const newComment = de.query(By.css('test-form-text')).nativeElement.value = 'new Comment';
+    de.query(By.css('test-form-text')).nativeElement.value = 'new Comment';
 
     let comments;
     await component.comments$.subscribe((commentsResponse: Array<PhotoComment>) => {

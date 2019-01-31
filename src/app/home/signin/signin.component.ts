@@ -42,7 +42,7 @@ export class SigninComponent implements OnInit {
         // () => this.router.navigateByUrl('user/' + userName),
         succes => {
           this.fromUrl ? this.router.navigateByUrl(this.fromUrl) :
-            this.router.navigate(['user', userName]);
+            this.navigateToUser(userName);
           console.log('success --> ', succes);
           console.log(userName);
          },
@@ -54,5 +54,9 @@ export class SigninComponent implements OnInit {
           }
         }
       );
+  }
+
+  navigateToUser(userName: string) {
+    this.router.navigate(['user', userName]);
   }
 }
