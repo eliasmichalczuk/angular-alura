@@ -17,17 +17,32 @@ describe('SigninComponent |', () => {
   let fixture: ComponentFixture<SigninComponent>;
   let de: DebugElement;
   let authServiceSpy;
+  let activatedRouteSpy;
+  const routerSpy = jasmine.createSpyObj('Router', ['navigateByUrl', 'navigate']);
+  let routerSpyobj;
+  const mockRouter = {
+    navigate: jasmine.createSpy('navigate')
+  };
+
 
   beforeEach((() => {
     const spy = jasmine.createSpyObj('AuthService', ['authenticate']);
+    const activatedSpy = jasmine.createSpyObj('ActivatedRoute', ['queryParams']);
     TestBed.configureTestingModule({
       declarations: [ SigninComponent ],
-      providers: [ FormBuilder, Router, PlatformDetectorService, {
+      providers: [ FormBuilder,
+        {
+          provide: Router,
+          useClass: routerSpy
+      }
+        , PlatformDetectorService,
+        {
         provide: ActivatedRoute,
         useValue: {
           params: of({fromUrl: '/'})
         }
-      },
+      }
+      ,
       {
         provide: AuthService, useValue: spy
       }],
@@ -35,6 +50,8 @@ describe('SigninComponent |', () => {
       schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
+    //activatedRouteSpy = TestBed.get(ActivatedRoute);
+    routerSpyobj = TestBed.get(Router);
     authServiceSpy = TestBed.get(AuthService);
     fixture = TestBed.createComponent(SigninComponent);
     component = fixture.componentInstance;
@@ -47,11 +64,12 @@ describe('SigninComponent |', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should login correctly', () => {
+  it('should login correctly', async () => {
+    //activatedRouteSpy.queryParams.and.returnValue(defer(() => Promise.resolve({fromUrl: '/'})));
     de.query(By.css('test-username')).nativeElement.value = 'flavio';
     de.query(By.css('test-password')).nativeElement.value = '123';
     de.nativeElement.querySelector('button').click();
-    authServiceSpy.authenticate.and.returnValue(defer(() => Promise.resolve(new HttpResponse())));
-    expect(component.navigateToUser).toHaveBeenCalled();
+    await authServiceSpy.authenticate.and.returnValue(defer(() => Promise.resolve(new HttpResponse())));
+    expect(component.navigateToUser).toHaveBeenCalledWith(['/router']);
   });
 });
