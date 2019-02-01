@@ -53,12 +53,12 @@ describe('PhotoCommentsComponent', () => {
     await component.comments$.subscribe((commentsResponse: Array<PhotoComment>) => {
       comments = commentsResponse;
     });
-    expect(comments.length).toBe(1);
+    expect(comments.length).toEqual(1);
     component.save();
     await component.comments$.subscribe((commentsResponse: Array<PhotoComment>) => {
       comments = commentsResponse;
     });
-    expect(this.comments.length).toBe(2);
+    expect(this.comments.length).toEqual(2);
     expect(this.comments[1].text).toEqual('new Comment');
   });
 
