@@ -42,17 +42,18 @@ export class SigninComponent implements OnInit {
         // () => this.router.navigateByUrl('user/' + userName),
         succes => {
           this.fromUrl ? this.router.navigateByUrl(this.fromUrl) :
-            this.router.navigate(['user', userName]);
-          console.log('success --> ', succes);
-          console.log(userName);
+            this.navigateToUser(userName);
          },
         err => {
-          console.log(err);
           this.loginForm.reset();
           if (this.platformDetectorService.isPlatformBrowser()) {
             this.userNameInput.nativeElement.focus();
           }
         }
       );
+  }
+
+  navigateToUser(userName: string) {
+    this.router.navigate(['user', userName]);
   }
 }
