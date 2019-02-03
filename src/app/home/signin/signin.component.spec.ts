@@ -11,54 +11,69 @@ import { HttpResponse, HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
 import { VmessageModule } from 'src/app/shared/components/vmessage/vmessage.module';
 import { tick } from '@angular/core/src/render3';
+import { ActivatedRouteStub } from 'src/app/shared/test/activated-route-stub';
+import { promise } from 'protractor';
+import { Promise } from 'q';
+
+let component: SigninComponent;
+let fixture: ComponentFixture<SigninComponent>;
+let de: DebugElement;
+let authenticate;
+let router: Router;
 
 describe('SigninComponent |', () => {
-  let component: SigninComponent;
-  let fixture: ComponentFixture<SigninComponent>;
-  let de: DebugElement;
-  let authServiceSpy;
-  let router: Router;
+  beforeEach(() => this.activatedRouteStub.setParamMap({fromUrl: '/home'}));
 
   beforeEach((() => {
-    const spy = jasmine.createSpyObj('AuthService', ['authenticate']);
-    const activatedSpy = jasmine.createSpyObj('ActivatedRoute', ['queryParams']);
+    let activatedRouteStub: ActivatedRouteStub;
+    activatedRouteStub = new ActivatedRouteStub();
+    activatedRouteStub.setParamMap({fromUrl: '/home'});
+    console.log('TCL: activatedRouteStub', activatedRouteStub)
+    const authServiceSpy = jasmine.createSpyObj('AuthService', ['authenticate']);
+    // const activatedSpy = jasmine.createSpyObj('ActivatedRoute', ['queryParams']);
     const routerSpy = jasmine.createSpyObj('Router', ['navigateByUrl', 'navigate']);
+    authenticate = authServiceSpy.authenticate.and.return( of(new HttpResponse()));
 
     TestBed.configureTestingModule({
       declarations: [ SigninComponent ],
       providers: [ FormBuilder
         , PlatformDetectorService,
       {
-        provide: AuthService, useValue: spy
+        provide: AuthService, useValue: authServiceSpy
       },
+      {
+        provide: Router, useValue: routerSpy
+      },
+      {
+        provide: ActivatedRoute, useClass: activatedRouteStub
+      }
     ],
-      imports: [ReactiveFormsModule, VmessageModule, RouterTestingModule ]
+      imports: [ReactiveFormsModule, VmessageModule ]
     })
     .compileComponents();
-    authServiceSpy = TestBed.get(AuthService);
+
+
     fixture = TestBed.createComponent(SigninComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
     de = fixture.debugElement;
-    spyOn(component, 'navigateToUser').and.callFake((name: string) => {
-      return name;
-    });
-    // router = fixture.debugElement.injector.get(Router);
+    // spyOn(component, 'navigateToUser').and.callFake((name: string) => {
+    //   return name;
+    // });
+    //router = fixture.debugElement.injector.get(Router);
+      fixture.detectChanges();
   }));
 
   it('should login correctly', () => {
-    fixture.detectChanges();
-    fixture.whenStable().then(() => {
       de.query(By.css('test-username')).nativeElement.value = 'flavio';
       de.query(By.css('test-password')).nativeElement.value = '123';
       de.nativeElement.querySelector('button').click();
 
       const spy = router.navigateByUrl as jasmine.Spy;
       const navArgs = spy.calls.first().args[0];
+      console.log('navargs -> ', navArgs);
       const name = 'flavio';
 
       expect(navArgs).toBe(`/user/${name}`);
       expect(component.navigateToUser).toHaveBeenCalled();
-    });
   });
 });

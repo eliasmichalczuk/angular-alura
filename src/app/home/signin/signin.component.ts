@@ -25,7 +25,15 @@ export class SigninComponent implements OnInit {
 
   // usar form builder para gerar formulario
   ngOnInit(): void {
-    this.activatedRoute.queryParams.subscribe(params => this.fromUrl = params['fromUrl']);
+    // this.activatedRoute.queryParams.subscribe(params => {
+    //   this.fromUrl = params['fromUrl'];
+    //   console.log('query Param->> ', params['fromUrl']);
+    // });
+    // old way, deprecated
+    this.activatedRoute.paramMap.subscribe(pmap => {
+      console.log(' paramMap  ->>', pmap.get('fromUrl'));
+      this.fromUrl = pmap.get('fromUrl');
+    } );
     this.loginForm = this.formBuilder.group({
       userName: ['flavio', Validators.required],
       password: ['123', Validators.required]
@@ -41,7 +49,7 @@ export class SigninComponent implements OnInit {
       .subscribe(
         // () => this.router.navigateByUrl('user/' + userName),
         succes => {
-          this.fromUrl ? this.router.navigateByUrl(this.fromUrl) :
+          this.fromUrl ? this.navigateToPreviousPage() :
             this.navigateToUser(userName);
          },
         err => {
@@ -51,6 +59,10 @@ export class SigninComponent implements OnInit {
           }
         }
       );
+  }
+
+  private navigateToPreviousPage() {
+    return this.router.navigateByUrl(this.fromUrl);
   }
 
   navigateToUser(userName: string) {
