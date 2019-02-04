@@ -28,7 +28,7 @@ const routes: Routes = [
   { path: 'p/add', component:  PhotoFormComponent, canActivate: [AuthGuard],
     data: { title : 'Photo upload'}
   },
-  { path: 'p/:id', component:  PhotoDetailsComponent, canActivate: [AuthGuard],
+  { path: 'p', component:  PhotoDetailsComponent, canActivate: [AuthGuard],
     data: { title : 'Photo detail'}
   },
   { path: 'not-found', component:  NotFoundComponent,

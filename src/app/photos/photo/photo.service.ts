@@ -13,7 +13,6 @@ const API = 'http://localhost:3000/';
 @Injectable({
   providedIn: 'root'
 })
-@Injectable({providedIn: 'root'})
 export class PhotoService {
 
   constructor(private http: HttpClient) { }

@@ -3,7 +3,7 @@
         <div class="row center">
                 <li  *ngFor="let cols of rows" class="row no-gutters">
                     <div *ngFor="let photo of cols" class="col-4" appDarkenOnHover brightness='80%'>
-                    <a href="" [routerLink]="['/p', photo.id]">
+                    <a href="" [routerLink]="['/p', {id: photo.id}]">
                         <app-card [title]="photo.description">
                             <app-photo class="col-md-4 col-sm-4 col-lg-4"   
                                 [description]="photo.description"

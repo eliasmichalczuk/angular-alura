@@ -21,7 +21,6 @@ export class PhotoCommentsComponent implements OnInit {
     private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    console.log('photo id =>> ', this.photoId);
     this.comments$ = this.photoService.getComments(this.photoId);
 
     this.commentForm = this.formBuilder.group({

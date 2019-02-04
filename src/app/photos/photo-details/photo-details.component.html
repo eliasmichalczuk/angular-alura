@@ -9,7 +9,7 @@
           <div class="text-left mb-4">
               <i class="fa fa-comment-o ml-2 fa-lg">{{photo?.comments}}</i>
             <i appShowIfLoggedIn (click)="like(photo)" class="fa fa-heart-o mr-2 fa-lg pull-left">{{photo?.likes}}</i>
-            <i appPhotoOwnerOnly [ownedPhoto]="photo" (click)="remove()" class="fa fa-trash-o pull-right fa-lg"></i>
+            <i appPhotoOwnerOnly [ownedPhoto]="photo" (click)="remove()" class="fa fa-trash-o pull-right fa-lg test-delete-button"></i>
           </div>
         <hr>
       </small>
