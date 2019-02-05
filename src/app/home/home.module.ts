@@ -22,7 +22,7 @@ import { UserNotTakenValidatorService } from './signup/user-not-taken-validator.
     HomeRoutingModule
   ],
   exports: [
-
+    FormsModule
   ],
   providers: [SignupService, TokenService, UserNotTakenValidatorService, SignupService]
 })

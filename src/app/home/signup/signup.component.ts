@@ -23,8 +23,7 @@ export class SignupComponent implements OnInit {
     private userNotTaken: UserNotTakenValidatorService,
     private signUpService: SignupService,
     private router: Router,
-    private platformDetector: PlatformDetectorService,
-    private activatedRoute: ActivatedRoute) {
+    private platformDetector: PlatformDetectorService) {
    }
 
   ngOnInit() {
@@ -44,10 +43,7 @@ export class SignupComponent implements OnInit {
       password: ['',
         [Validators.required, Validators.minLength(8), Validators.maxLength(14)]
       ]
-    }, {
-      validator: userNamePassword
     });
-    console.log(this.signupForm);
 
     if (this.platformDetector.isPlatformBrowser()) {
       this.emailInput.nativeElement.focus();

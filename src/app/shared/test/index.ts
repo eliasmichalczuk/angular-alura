@@ -13,3 +13,9 @@ export function click (el: DebugElement | HTMLElement, eventObj: any = ButtonCli
         el.triggerEventHandler('click', eventObj);
     }
 }
+
+export function newEvent(eventName: string, bubbles = false, cancelable = false) {
+    let evt = document.createEvent('CustomEvent');
+    evt.initCustomEvent(eventName, bubbles, cancelable, null);
+    return evt;
+}

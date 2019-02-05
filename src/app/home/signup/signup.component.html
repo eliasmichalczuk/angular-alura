@@ -4,7 +4,7 @@
   <div class="form-group" >
 
     <input #emailInput
-      formControlName="email" type="text" placeholder="email" autofocus class="form-control">
+      formControlName="email" type="text" placeholder="email" autofocus class="form-control test-email-input">
     <app-vmessage
       *ngIf="signupForm.get('email').errors?.required && form.submitted"
       text="Please type your email">
@@ -17,7 +17,7 @@
 
   <div class="form-group" >
 
-    <input  formControlName="fullName" type="text" placeholder="full name" class="form-control">
+    <input  formControlName="fullName" type="text" placeholder="full name" class="form-control test-fullname-input">
     <app-vmessage
       *ngIf="signupForm.get('fullName').errors?.required && form.submitted"
       text="Please type your name">
@@ -34,7 +34,7 @@
 
   <div class="form-group" >
 
-    <input  formControlName="userName" type="text" placeholder="user name" class="form-control">
+    <input  formControlName="userName" type="text" placeholder="user name" class="form-control test-username-input">
     <app-vmessage
       *ngIf="signupForm.get('userName').errors?.required && form.submitted"
       text="Please type your username">
@@ -60,7 +60,7 @@
 
   <div class="form-group" >
     
-    <input  formControlName="password" type="password" placeholder="password" class="form-control">
+    <input  formControlName="password" type="password" placeholder="password" class="form-control test-password-input">
     <app-vmessage
       *ngIf="signupForm.get('password').errors?.required && form.submitted"
       text="Please type your password">
@@ -79,6 +79,6 @@
     </app-vmessage> 
   </div>
 
-  <button class="btn btn-primary">Sign Up</button>
+  <button class="btn btn-primary test-submit-button">Sign Up</button>
    <p>Already a user? <a [routerLink]="['']">Sign In!</a></p>
 </form>
