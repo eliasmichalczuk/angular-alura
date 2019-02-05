@@ -5,9 +5,9 @@ import { HttpResponse } from '@angular/common/http';
 export class PhotoServiceStub {
 
     constructor() {
-  
+
     }
-  
+
     findById(photoId: number): Observable<Photo> {
       return of({
         id: photoId,
@@ -23,7 +23,7 @@ export class PhotoServiceStub {
     removePhoto(photoId: number) {
       return of(new HttpResponse());
     }
-  
+
     like(photoId: number) {
       return of(false);
     }
