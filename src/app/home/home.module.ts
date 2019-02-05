@@ -8,6 +8,8 @@ import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { HomeRoutingModule } from './home.routing.module';
 import { SignupService } from './signup/signup.service';
+import { TokenService } from '../core/token/token.service';
+import { UserNotTakenValidatorService } from './signup/user-not-taken-validator.service';
 
 @NgModule({
   declarations: [ SigninComponent, SignupComponent, HomeComponent ],
@@ -22,6 +24,6 @@ import { SignupService } from './signup/signup.service';
   exports: [
 
   ],
-  providers: [SignupService]
+  providers: [SignupService, TokenService, UserNotTakenValidatorService, SignupService]
 })
 export class HomeModule { }
