@@ -26,6 +26,7 @@ export class PhotoCommentsComponent implements OnInit {
     this.commentForm = this.formBuilder.group({
       comment: ['', Validators.maxLength(300)]
     });
+    this.commentForm.get('comment').setValue('TESTE');
   }
 
   save() {
@@ -35,7 +36,7 @@ export class PhotoCommentsComponent implements OnInit {
                             .pipe(switchMap(() => this.photoService.getComments(this.photoId)))
                             .pipe(tap(() => {
                               this.commentForm.reset();
-                              alert('Adicionado com sucesso');
+                              // alert('Adicionado com sucesso');
                             }));
   }
 }

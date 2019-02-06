@@ -7,13 +7,19 @@ import { User } from 'src/app/core/user/user.interface';
 
 export class TestUserService {
 
-    constructor() {
-    }
-
   private userSubjet = new BehaviorSubject<User>(null);
   private userName: string;
 
-  setToken(token: string) {
+    constructor() {
+      const user: User = {
+        name: 'user',
+        email: 'email@user.com',
+        id: 2
+      };
+      this.userSubjet.next(user);
+    }
+
+    setToken(token: string) {
   }
 
   getUser() {

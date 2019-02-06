@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GlobalErrorComponent } from './global-error.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('GlobalErrorComponent', () => {
   let component: GlobalErrorComponent;
@@ -8,7 +9,8 @@ describe('GlobalErrorComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GlobalErrorComponent ]
+      declarations: [ GlobalErrorComponent ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   }));

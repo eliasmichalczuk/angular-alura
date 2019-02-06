@@ -111,12 +111,12 @@ describe('SignupComponent', () => {
   it('should complete form with wrong info and get error', async () => {
     fixture.detectChanges();
     fixture.whenStable().then(async () => {
-      const bannerDe: DebugElement = fixture.debugElement;
-      const bannerEl: HTMLInputElement = <HTMLInputElement> bannerDe.nativeElement;
-      let email: HTMLInputElement = bannerEl.querySelector('.test-email-input');
-      let fullname: HTMLInputElement = bannerEl.querySelector('.test-fullname-input');
-      let username: HTMLInputElement = bannerEl.querySelector('.test-username-input');
-      let password: HTMLInputElement = bannerEl.querySelector('.test-password-input');
+      const de: DebugElement = fixture.debugElement;
+      const htmlEl: HTMLInputElement = <HTMLInputElement> de.nativeElement;
+      let email: HTMLInputElement = htmlEl.querySelector('.test-email-input');
+      let fullname: HTMLInputElement = htmlEl.querySelector('.test-fullname-input');
+      let username: HTMLInputElement = htmlEl.querySelector('.test-username-input');
+      let password: HTMLInputElement = htmlEl.querySelector('.test-password-input');
 
       email.value = 'email';
       fullname.value = 'a';
@@ -129,12 +129,13 @@ describe('SignupComponent', () => {
       password.dispatchEvent(newEvent('input'));
 
       let spy = spyOn(component, 'signup');
-      bannerDe.query(By.css('.test-submit-button')).triggerEventHandler('click', null);
+      de.query(By.css('.test-submit-button')).triggerEventHandler('click', null);
       fixture.detectChanges();
       fixture.whenStable().then(() => {
         // expect(component.signupForm.errors).toBeTruthy();
-        let inputs: Array<DebugElement> = bannerDe.queryAll(By.css('.test-vmessage-component'));
-        expect(inputs[0].name).toBeFalsy();
+        // let inputs: Array<DebugElement> = de.queryAll(By.directive(VmessageComponent));
+        // expect(inputs[0]).toBeTruthy();
+        expect(spy).not.toHaveBeenCalled();
       });
     });
   });

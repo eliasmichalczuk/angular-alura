@@ -46,13 +46,13 @@
       </div>
       <div *ngIf="!percentDone; else uploadProgress">
         <button 
-        [disabled]="photoForm.invalid" type="submit" class="btn btn-primary btn-block">
+        [disabled]="photoForm.invalid" type="submit" class="btn btn-primary btn-block test-submit-button">
           Upload
         </button>
         <a [routerLink]="['']" class="btn btn-secondary btn-block">Cancel</a>
       </div>
       <ng-template #uploadProgress>
-        <div class="text-center display-4">
+        <div class="text-center display-4" class="test-uploadProgress-div">
           Uploading... {{percentDone}}%
         </div>
       </ng-template>
