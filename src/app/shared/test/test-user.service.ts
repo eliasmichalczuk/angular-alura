@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { UserService } from 'src/app/core/user/user.service';
 import { BehaviorSubject } from 'rxjs';
 import { User } from 'src/app/core/user/user.interface';
+import { UserServiceInterface } from '../interfaces/user-service.interface';
 
 @Injectable()
 
-export class TestUserService {
+export class TestUserService implements UserServiceInterface {
 
   private userSubjet = new BehaviorSubject<User>(null);
   private userName: string;

@@ -3,11 +3,12 @@ import { TokenService } from '../token/token.service';
 import { Subject, BehaviorSubject } from 'rxjs';
 import { User } from './user.interface';
 import * as jtw_decode from 'jwt-decode';
+import { UserServiceInterface } from 'src/app/shared/interfaces/user-service.interface';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class UserService implements UserServiceInterface {
 
   // subject behavior segua o valor para o próximo subscribe que buscar
   private userSubjet = new BehaviorSubject<User>(null);

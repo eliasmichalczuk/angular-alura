@@ -12,7 +12,8 @@ export class PhotosComponent implements OnChanges {
   rows: Photo[] = [];
   filter = '';
 
-  constructor() { }
+  constructor() {
+   }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.photos) {

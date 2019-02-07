@@ -6,7 +6,7 @@
         #userNameInput
         formControlName="userName" 
         type="text" 
-        class="form-control" 
+        class="form-control test-username" 
         placeholder="username" autofocus>
       <app-vmessage
         *ngIf="loginForm.get('userName').errors?.required"
@@ -15,7 +15,7 @@
     </div>
     
     <div class="form-group">
-      <input formControlName="password" type="password" class="form-control" placeholder="password" autofocus>
+      <input formControlName="password" type="password" class="form-control test-password" placeholder="password" autofocus>
       <app-vmessage
         *ngIf="loginForm.get('password').errors?.required"
         text="Password required">

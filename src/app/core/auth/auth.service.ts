@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { TokenService } from '../token/token.service';
 import { UserService } from '../user/user.service';
+import { UserServiceInterface } from 'src/app/shared/interfaces/user-service.interface';
 
 const API_URl = 'http://localhost:3000/';
 // unica isntancia para toda a aplicação
@@ -24,7 +25,6 @@ export class AuthService {
 			console.log('TCL: AuthService -> authenticate -> res', res)
       const authToken = res.headers.get('x-access-token');
       this.userService.setToken(authToken);
-      console.log('AuthService -> authenticate -> authToken', authToken);
     }));
   }
 }

@@ -26,7 +26,6 @@ export class PhotoCommentsComponent implements OnInit {
     this.commentForm = this.formBuilder.group({
       comment: ['', Validators.maxLength(300)]
     });
-    this.commentForm.get('comment').setValue('TESTE');
   }
 
   save() {

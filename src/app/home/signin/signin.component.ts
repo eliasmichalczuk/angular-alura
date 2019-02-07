@@ -31,9 +31,8 @@ export class SigninComponent implements OnInit {
     // });
     // old way, deprecated
     this.activatedRoute.paramMap.subscribe(pmap => {
-      console.log(' paramMap  ->>', pmap.get('fromUrl'));
       this.fromUrl = pmap.get('fromUrl');
-    } );
+    });
     this.loginForm = this.formBuilder.group({
       userName: ['flavio', Validators.required],
       password: ['123', Validators.required]

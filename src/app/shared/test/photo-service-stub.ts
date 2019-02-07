@@ -2,25 +2,30 @@ import { Observable, of } from 'rxjs';
 import { Photo } from 'src/app/photos/photo/photo';
 import { HttpResponse, HttpEventType, HttpEvent } from '@angular/common/http';
 import { PhotoComment } from 'src/app/photos/photo/photo-comment';
+import { PhotosMock } from './components/photosMock';
 
 export class PhotoServiceStub {
 
+  photosMock: PhotosMock;
 
-    constructor() {
-
+  comments: Array<PhotoComment> = [
+    {
+      date: new Date,
+      text: 'text test',
+      userName: 'user'
+    },
+    {
+      date: new Date,
+      text: 'test',
+      userName: 'joao'
     }
-    comments: Array<PhotoComment> = [
-      {
-        date: new Date,
-        text: 'text test',
-        userName: 'user'
-      },
-      {
-        date: new Date,
-        text: 'test',
-        userName: 'joao'
-      }
-    ];
+  ];
+
+  photos: Array<Photo>;
+    constructor() {
+      this.photosMock = new PhotosMock();
+      this.photos = this.photosMock.photos;
+    }
 
     upload(description: string, allowComments: boolean, file: File) {
       const formData = new FormData();
@@ -68,7 +73,7 @@ export class PhotoServiceStub {
       return of(new HttpResponse().ok);
     }
 
-    listFromUserPaginated(): Photo[] {
-      throw new Error('Method not implemented.');
+    listFromUserPaginated(): Observable<Photo[]> {
+      return of(this.photos);
     }
   }

@@ -1,7 +1,7 @@
 <ol class="list-unstyled" *ngIf="photos.length; else sorryText">
     <div class="">
         <div class="row center">
-                <li  *ngFor="let cols of rows" class="row no-gutters">
+                <li  *ngFor="let cols of rows" class="row no-gutters test-list-item">
                     <div *ngFor="let photo of cols" class="col-4" appDarkenOnHover brightness='80%'>
                     <a href="" [routerLink]="['/p', {id: photo.id}]">
                         <app-card [title]="photo.description">
