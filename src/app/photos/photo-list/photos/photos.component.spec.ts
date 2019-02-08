@@ -35,6 +35,10 @@ describe('PhotosComponent', () => {
     fixture.detectChanges();
     await fixture.whenStable();
     expect(component.photosComponent.rows.length).toBe(1);
+    component.load();
+    fixture.detectChanges();
+    await fixture.whenStable();
+    expect(component.photosComponent.rows.length).toBe(2);
 
   });
 });
@@ -55,8 +59,12 @@ export class TestPhotosComponent implements OnInit {
   constructor(private photoService: PhotoServiceStub) { }
 
   ngOnInit() {
+    this.load();
+  }
+
+  load() {
     this.photoService.listFromUserPaginated().subscribe((response) => {
-      this.photos = response;
+      this.photos = this.photos.concat(response);
     });
     this.photosComponent.photos = this.photos;
   }

@@ -132,10 +132,11 @@ describe('SignupComponent', () => {
       de.query(By.css('.test-submit-button')).triggerEventHandler('click', null);
       fixture.detectChanges();
       fixture.whenStable().then(() => {
-        // expect(component.signupForm.errors).toBeTruthy();
-        // let inputs: Array<DebugElement> = de.queryAll(By.directive(VmessageComponent));
-        // expect(inputs[0]).toBeTruthy();
         expect(spy).not.toHaveBeenCalled();
+        expect(component.signupForm.get('userName').errors).toBeTruthy();
+        expect(component.signupForm.get('fullname').errors).toBeTruthy();
+        expect(component.signupForm.get('email').errors).toBeTruthy();
+        expect(component.signupForm.get('password').errors).toBeTruthy();
       });
     });
   });

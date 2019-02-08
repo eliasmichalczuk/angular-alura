@@ -27,7 +27,7 @@ export class PhotoServiceStub {
       this.photos = this.photosMock.photos;
     }
 
-    upload(description: string, allowComments: boolean, file: File) {
+    upload(description: string, allowComments: boolean, file: File): Observable<HttpResponse<any>> {
       const formData = new FormData();
       formData.append('description', description);
       formData.append('allowComments', allowComments ? 'true' : 'false');
@@ -37,7 +37,7 @@ export class PhotoServiceStub {
         loaded: 15,
         type: HttpEventType.UploadProgress
       };
-      return of(progress);
+      return of(new HttpResponse());
     }
 
     findById(photoId: number): Observable<Photo> {
@@ -47,11 +47,25 @@ export class PhotoServiceStub {
         comments: 2,
         description: 'desc',
         likes: 2,
-        postDate: new Date,
+        postDate: new Date(2019, 4, 12),
         url: 'url',
         userId: 1
       });
     }
+
+    getPhoto() {
+      return {
+        id: 50,
+        allowComments: true,
+        comments: 2,
+        description: 'desc',
+        likes: 2,
+        postDate: new Date(2019, 4, 12),
+        url: 'url',
+        userId: 1
+      };
+    }
+
     removePhoto(photoId: number) {
       return of(new HttpResponse());
     }

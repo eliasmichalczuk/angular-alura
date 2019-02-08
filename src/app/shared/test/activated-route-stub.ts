@@ -14,6 +14,9 @@ export class ActivatedRouteStub {
 
   constructor(initialParams?: Params) {
     this.setParamMap(initialParams);
+    this.paramMap.subscribe((pra) => {
+      console.log('act route', pra);
+    })
   }
 
   /** The mock paramMap observable */

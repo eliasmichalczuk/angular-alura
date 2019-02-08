@@ -1,4 +1,4 @@
-import { TestBed, async, TestModuleMetadata } from "@angular/core/testing";
+import { TestBed, async, TestModuleMetadata } from '@angular/core/testing';
 
 const resetTestingModule = TestBed.resetTestingModule,
   preventAngularFromResetting = () => TestBed.resetTestingModule = () => TestBed;
