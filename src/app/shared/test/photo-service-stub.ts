@@ -2,7 +2,7 @@ import { Observable, of } from 'rxjs';
 import { Photo } from 'src/app/photos/photo/photo';
 import { HttpResponse, HttpEventType, HttpEvent } from '@angular/common/http';
 import { PhotoComment } from 'src/app/photos/photo/photo-comment';
-import { PhotosMock } from './components/photosMock';
+import { PhotosMock } from './mock/photosMock';
 
 export class PhotoServiceStub {
 

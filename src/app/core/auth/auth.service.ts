@@ -22,7 +22,6 @@ export class AuthService {
     .post(API_URl + 'user/login', { userName, password }, { observe: 'response'})
      // observe response usado para ter acesso ao headers, para pegar o token
     .pipe(tap( res => {
-			console.log('TCL: AuthService -> authenticate -> res', res)
       const authToken = res.headers.get('x-access-token');
       this.userService.setToken(authToken);
     }));

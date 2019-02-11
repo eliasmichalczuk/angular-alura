@@ -1,5 +1,5 @@
 import { convertToParamMap, ParamMap, Params, UrlSegment, ActivatedRouteSnapshot, Route, ActivatedRoute, Data } from '@angular/router';
-import { ReplaySubject, Observable } from 'rxjs';
+import { ReplaySubject, Observable, of } from 'rxjs';
 import { Type } from '@angular/core';
 
 /**
@@ -16,9 +16,8 @@ export class ActivatedRouteStub {
     this.setParamMap(initialParams);
     this.paramMap.subscribe((pra) => {
       console.log('act route', pra);
-    })
+    });
   }
-
   /** The mock paramMap observable */
   readonly paramMap = this.subject.asObservable();
 
