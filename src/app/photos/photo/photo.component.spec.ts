@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PhotoComponent } from './photo.component';
 
-describe('PhotoComponent', () => {
+xdescribe('PhotoComponent', () => {
   let component: PhotoComponent;
   let fixture: ComponentFixture<PhotoComponent>;
 

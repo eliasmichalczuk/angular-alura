@@ -6,9 +6,6 @@ import { AlertService } from 'src/app/shared/components/alert/alert.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ActivatedRouteStub } from 'src/app/shared/test/activated-route-stub';
 import { PhotoService } from '../photo/photo.service';
-import { Photo } from '../photo/photo';
-import { defer, of, Observable } from 'rxjs';
-import { HttpResponse } from '@angular/common/http';
 import { DebugElement, NO_ERRORS_SCHEMA, inject } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { click } from 'src/app/shared/test';
@@ -16,7 +13,6 @@ import { ShowIfLoggeInModule } from 'src/app/shared/directives/show-if-loggeIn/s
 import { VmessageModule } from 'src/app/shared/components/vmessage/vmessage.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { setTimeout } from 'timers';
 import { PhotoServiceStub } from 'src/app/shared/test/photo-service-stub';
 import { AlertServiceStub } from 'src/app/shared/test/alert-service-stub';
 
@@ -61,7 +57,6 @@ describe('PhotoDetailsComponent', () => {
     fixture.detectChanges();
     deleteButton = fixture.debugElement.query(By.css('.test-delete-button'));
     serviceSpy = TestBed.get(ActivatedRoute);
-    // deleteButton = fixture.debugElement.nativeElement.queryAll(By.directive('i'))[0];
   });
 
   it('should call delete from component', () => {

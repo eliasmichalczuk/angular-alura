@@ -8,14 +8,13 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { HttpClient } from '@angular/common/http';
 
 describe('AuthService', () => {
-  let httpClientSpy = jasmine.createSpyObj('HttpClient', ['post']);
+  const httpClientSpy = jasmine.createSpyObj('HttpClient', ['post']);
   let service: AuthService;
-  let userStub = new TestUserService();
-  let loginKeys = {
+  const userStub = new TestUserService();
+  const loginKeys = {
     login: 'flavio',
     password: '123'
   };
-  let httpclient;
   const API_URl = 'http://localhost:3000/';
 
 

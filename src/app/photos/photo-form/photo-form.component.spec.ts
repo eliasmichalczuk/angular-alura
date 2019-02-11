@@ -16,11 +16,8 @@ import { Router } from '@angular/router';
 describe('PhotoFormComponent', () => {
   let component: PhotoFormComponent;
   let fixture: ComponentFixture<PhotoFormComponent>;
-  // let photoSpy =  jasmine.createSpyObj('PhotoService', ['upload']);
   const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
-  // const alertSpy = jasmine.createSpyObj('AlertService', ['success', 'warning']);
   const alertStub = new AlertServiceStub();
-  const userService = new TestUserService();
   const photoServiceStub = new PhotoServiceStub();
   const parts = [
     new Blob(['file part 1'], {type: 'text/plain'}),

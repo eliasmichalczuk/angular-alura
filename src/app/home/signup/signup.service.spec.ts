@@ -4,15 +4,13 @@ import { SignupService } from './signup.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { of } from 'rxjs';
 import { HttpResponse, HttpClient } from '@angular/common/http';
-import { post } from 'selenium-webdriver/http';
 
 describe('SignupService', () => {
 
   let service: SignupService;
-  let httpClientSpy = jasmine.createSpyObj('HttpClient', ['post', 'get']);
+  const httpClientSpy = jasmine.createSpyObj('HttpClient', ['post', 'get']);
   const API_URL = 'http://localhost:3000/';
-  let username = 'flavio';
-  let spy: jasmine.Spy;
+  const username = 'flavio';
 
   beforeEach(() => {
     TestBed.configureTestingModule({

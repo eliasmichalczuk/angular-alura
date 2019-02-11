@@ -3,8 +3,6 @@ import { PhotosComponent } from './photos.component';
 import { NO_ERRORS_SCHEMA, ViewChild, OnInit, Component, DebugElement } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PhotoServiceStub } from 'src/app/shared/test/photo-service-stub';
-import { DebugContext } from '@angular/core/src/view';
-import { By } from '@angular/platform-browser';
 import { Photo } from '../../photo/photo';
 
 

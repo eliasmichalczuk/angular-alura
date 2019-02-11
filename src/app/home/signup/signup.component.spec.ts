@@ -2,14 +2,12 @@ import { TestBed, ComponentFixture, async } from '@angular/core/testing';
 
 import { SignupService } from './signup.service';
 import { SignupComponent } from './signup.component';
-import { Router, RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 import { ActivatedRouteStub } from 'src/app/shared/test/activated-route-stub';
-import { FormBuilder, FormsModule, ReactiveFormsModule, FormGroup } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PlatformDetectorService } from 'src/app/core/platform-detector/platform-detector.service';
-import { UserNotTakenValidatorService } from './user-not-taken-validator.service';
 import { HttpResponse } from '@angular/common/http';
 import { of } from 'rxjs';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/compiler/src/core';
 import { CommonModule } from '@angular/common';
 import { VmessageModule } from 'src/app/shared/components/vmessage/vmessage.module';
 import { NO_ERRORS_SCHEMA, DebugElement } from '@angular/core';
