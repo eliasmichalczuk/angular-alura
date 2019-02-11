@@ -29,7 +29,7 @@ export class PhotoListComponent implements OnInit {
       this.userName = params.userName;
       this.photos = this.actRoute.snapshot.data['photos'];
     });
-  }
+    }
 
 
   load() {
