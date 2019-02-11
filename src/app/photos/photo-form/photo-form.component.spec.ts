@@ -10,11 +10,8 @@ import { PhotoService } from '../photo/photo.service';
 import { AlertServiceStub } from 'src/app/shared/test/alert-service-stub';
 import { NO_ERRORS_SCHEMA, DebugElement } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { By } from '@angular/platform-browser';
-import { click } from 'src/app/shared/test';
 import { PhotoServiceStub } from 'src/app/shared/test/photo-service-stub';
 import { Router } from '@angular/router';
-import { of } from 'rxjs';
 
 describe('PhotoFormComponent', () => {
   let component: PhotoFormComponent;
@@ -22,7 +19,7 @@ describe('PhotoFormComponent', () => {
   // let photoSpy =  jasmine.createSpyObj('PhotoService', ['upload']);
   const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
   // const alertSpy = jasmine.createSpyObj('AlertService', ['success', 'warning']);
-  let alertStub = new AlertServiceStub();
+  const alertStub = new AlertServiceStub();
   const userService = new TestUserService();
   const photoServiceStub = new PhotoServiceStub();
   const parts = [
@@ -40,7 +37,7 @@ describe('PhotoFormComponent', () => {
           provide: AlertService, useValue: alertStub
         },
       {
-        provide: UserService, useValue: TestUserService
+        provide: UserService, useClass: TestUserService
       },
     {
       provide: PhotoService, useValue: photoServiceStub

@@ -72,6 +72,3 @@ describe('PhotoListComponent', async () => {
     await fixture.whenStable();
   });
 });
-
-// [ Object({ allowComments: true, comments: 1, description: 'descr', id: 1, likes: 2, postDate: Date(Mon Feb 11 2019 09:17:10 GMT-0200 (Horário de Verão de Brasília)), url: 'url base', userId: 1 }), Object({ allowComments: true, comments: 1, description: 'descr', id: 2, likes: 2, postDate: Date(Mon Feb 11 2019 09:17:10 GMT-0200 (Horário de Verão de Brasília)), url: 'url base', userId: 1 }), Object({ allowComments: true, comments: 1, description: 'descr', id: 2, likes: 2, postDate: Date(Mon Feb 11 2019 09:17:10 GMT-0200 (Horário de Verão de Brasília)), url: 'url base', userId: 1 }) ]
-// [ Object({ allowComments: true, comments: 1, description: 'descr', id: 1, likes: 2, postDate: Date(Mon Feb 11 2019 09:17:10 GMT-0200 (Horário de Verão de Brasília)), url: 'url base', userId: 1 }), Object({ allowComments: true, comments: 1, description: 'descr', id: 2, likes: 2, postDate: Date(Mon Feb 11 2019 09:17:10 GMT-0200 (Horário de Verão de Brasília)), url: 'url base', userId: 1 }), Object({ allowComments: true, comments: 1, description: 'descr', id: 2, likes: 2, postDate: Date(Mon Feb 11 2019 09:17:10 GMT-0200 (Horário de Verão de Brasília)), url: 'url base', userId: 1 }) ]
